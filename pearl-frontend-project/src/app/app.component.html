@@ -1,24 +1,33 @@
-<mat-table class="messages-table" [dataSource]="messages">
-  
-  <ng-container matColumnDef="seqNo">
-      <div *matHeaderCellDef>#</div>
-      <div *matCellDef="let lesson">{{messages.first_name}}</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="table-container">
+    <mat-table  [dataSource]="dataSource">
+
+    <ng-container matColumnDef="Name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+        <mat-cell *matCellDef="let entry">{{entry.first_name}} {{entry.last_name}}</mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="Message">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Message</mat-header-cell>
+      <mat-cell *matCellDef="let entry">{{entry.messages[0].body | truncate:250 }}</mat-cell>
   </ng-container>
 
-  <ng-container matColumnDef="description">
-      <div *matHeaderCellDef>Description</div>
-      <div class="description-cell"
-                *matCellDef="let lesson">{{lesson.description}}</div>
-  </ng-container>
+  <ng-container matColumnDef="Time">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Date & Time</mat-header-cell>
+    <mat-cell *matCellDef="let entry">{{entry.messages[0].date_completed.$date | date: 'medium'}}</mat-cell>
+</ng-container>
 
-  <ng-container matColumnDef="duration">
-      <div *matHeaderCellDef>Duration</div>
-      <div class="duration-cell"
-                *matCellDef="let lesson">{{lesson.duration}}</div>
-  </ng-container>
-  
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  
-  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-  
-</mat-table>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+      
+    </mat-table>
+  </div>
+</body>
+</html>

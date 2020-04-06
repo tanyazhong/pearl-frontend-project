@@ -2,6 +2,30 @@
     "messages": [
         {
             "_id": {
+                "$oid": "5e893174450389a055c32fa7"
+            },
+            "contact_info": {
+                "phone": "+13032173873"
+            },
+            "messages": [
+                {
+                    "from_": "+13032173873",
+                    "twilio_message_sid": "SMc445de2783ea080169aec50de7f09362",
+                    "twilio_account_sid": "ACa05989e56c45c2b361bc0b271f4584e6",
+                    "date_completed": {
+                        "$date": 1586049436504
+                    },
+                    "body": "Amazing ",
+                    "status": "delivered",
+                    "to": "+18442374095"
+                }
+            ],
+            "last_inbound_date": {
+                "$date": 1586049436832
+            }
+        },
+        {
+            "_id": {
                 "$oid": "5e839db16d471839f6955567"
             },
             "contact_info": {
@@ -106,21 +130,21 @@
             "messages": [
                 {
                     "to": "+19083913462",
-                    "body": "Hey Tim!",
+                    "body": "12:45",
                     "template_id": null,
                     "campaign_id": null,
                     "from_": "+18446023868",
                     "overridden": false,
                     "direction": 1,
                     "twilio_service_sid": "MG2a06ad70718286b41f40e7655816720c",
-                    "twilio_message_sid": "SM2925fbfa229d408fa452f1e5cd4dc121",
+                    "twilio_message_sid": "SM4e171ff77d634879bf43b4344b59d6c8",
                     "status": "delivered",
-                    "twilio_uri": "/2010-04-01/Accounts/ACa05989e56c45c2b361bc0b271f4584e6/Messages/SM2925fbfa229d408fa452f1e5cd4dc121.json",
+                    "twilio_uri": "/2010-04-01/Accounts/ACa05989e56c45c2b361bc0b271f4584e6/Messages/SM4e171ff77d634879bf43b4344b59d6c8.json",
                     "date_completed": {
-                        "$date": 1585608893503
+                        "$date": 1585932417283
                     },
                     "date_triggered": {
-                        "$date": 1585608890000
+                        "$date": 1585932412000
                     },
                     "twilio_account_sid": "ACa05989e56c45c2b361bc0b271f4584e6"
                 }

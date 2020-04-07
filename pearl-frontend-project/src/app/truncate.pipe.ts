@@ -11,7 +11,7 @@ export class TruncatePipe implements PipeTransform {
     }
 
     if (value.length > args) {
-      return value.substring(0, args) + '...';
+      return value.substring(0, args) + ' [...]';
     } else {
       return value;
     }

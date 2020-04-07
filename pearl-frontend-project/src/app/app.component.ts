@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: false }) sort: MatSort;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   getMessages(): Observable<Message[]> {
     return this.http
@@ -36,8 +36,10 @@ export class AppComponent implements OnInit {
         this.dataSource.data = this.messages.messages;
       });
 
-    setTimeout(() => this.dataSource.paginator = this.paginator);
-    setTimeout(() => this.dataSource.sort = this.sort);
+      setTimeout(() => {
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      });
   }
 
 }

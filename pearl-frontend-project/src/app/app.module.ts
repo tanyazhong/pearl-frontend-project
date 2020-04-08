@@ -4,7 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
-import {MatProgressSpinnerModule} from '@angular/material';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TruncatePipe } from './truncate.pipe';
@@ -19,8 +20,10 @@ import { TruncatePipe } from './truncate.pipe';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
     HttpClientModule,
-    MatProgressSpinnerModule,
     BrowserAnimationsModule
   ],
   providers: [],

@@ -29,35 +29,47 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    /* GET API RESPONSE */
     this.getMessages()
       .subscribe((res) => {
         this.messages = res;
         this.dataSource.data = this.messages.messages;
       });
 
-      this.dataSource.sort = this.sort;
-      console.log(this.dataSource.sort);
-      setTimeout(() => {
-        this.dataSource.paginator = this.paginator;
-        console.log(this.dataSource.paginator);
-      });
+    /* link sorter to data */
+    this.dataSource.sort = this.sort;
 
-      this.dataSource.sortingDataAccessor = (entry, property) => {
-        if (property === 'Name') {
-          return entry.first_name;
-        } 
-        else if (property == 'Message') {
-          return entry.messages[0].body;
-        }
-        else if (property == 'Date & Time') {
-          return entry.messages[0].date_completed.$date;
-        }
-        else {
-          return entry[property];
-        }
-      };
-        
+    /* let sorter know where to find the data to be sorted */
+    this.dataSource.sortingDataAccessor = (entry, property) => {
+      if (property === 'Name') {
+        return entry.first_name;
+      }
+      else if (property == 'Message') {
+        return entry.messages[0].body;
+      }
+      else if (property == 'Date & Time') {
+        return entry.messages[0].date_completed.$date;
+      }
+      else {
+        return entry[property];
+      }
+    };
 
+    /* link paginator to data */
+    setTimeout(() => {
+      this.dataSource.paginator = this.paginator;
+    });
+
+    this.dataSource.filterPredicate = (entry, filter) => {
+      var dataStr = entry.first_name + " " + entry.last_name + " " + entry.messages[0].body;
+      dataStr = dataStr.trim().toLocaleLowerCase();
+      return dataStr.indexOf(filter) != -1;
+    }
+  }
+
+  /* executes filtering upon user input */
+  public applyFilter = (value: string) => {
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
 }

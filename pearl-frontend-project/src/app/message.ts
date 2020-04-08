@@ -1,18 +1,18 @@
 export interface Message {
-    _id: { $oid: String };
-    first_name: String;
-    last_name: String;
-    contact_info: { phone: String };
+    _id: { $oid: string };
+    first_name: string;
+    last_name: string;
+    contact_info: { phone: string };
     last_inbound_date: { $date: Date };
     messages: [
         {
-            from_: String;
-            twilio_message_sid: String;
-            twilio_account_sid: String;
+            from_: string;
+            twilio_message_sid: string;
+            twilio_account_sid: string;
             date_completed: { $date: Date };
-            body: String;
-            status: String;
-            to: String;
+            body: string;
+            status: string;
+            to: string;
         }
     ];
 }

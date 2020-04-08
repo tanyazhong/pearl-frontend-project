@@ -60,8 +60,11 @@ export class AppComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
     });
 
+    /* make name (phone number if no name) and message searchable */
     this.dataSource.filterPredicate = (entry, filter) => {
-      var dataStr = entry.first_name + " " + entry.last_name + " " + entry.messages[0].body;
+      var dataStr = (entry.first_name || entry.contact_info.phone) +
+        " " + entry.last_name +
+        " " + entry.messages[0].body;
       dataStr = dataStr.trim().toLocaleLowerCase();
       return dataStr.indexOf(filter) != -1;
     }

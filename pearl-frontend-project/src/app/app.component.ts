@@ -74,7 +74,6 @@ export class AppComponent implements OnInit {
   public applyFilter = (value: string) => {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
-
 }
 
 

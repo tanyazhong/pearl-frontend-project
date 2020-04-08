@@ -16,7 +16,8 @@ export class AppComponent implements OnInit {
   title = 'pearl-frontend-project';
   messages;
   dataSource: MatTableDataSource<Message> = new MatTableDataSource([]);
-  displayedColumns = ["Name", "Message", "Time"];
+  displayedColumns = ["Name", "Message", "Date & Time"];
+  pageSizeOptions = [6, 12, 18]
   constructor(private http: HttpClient) { }
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
@@ -27,8 +28,6 @@ export class AppComponent implements OnInit {
       .get<Message[]>(URL);
   }
 
-  ngAfterViewInit() { }
-
   ngOnInit() {
     this.getMessages()
       .subscribe((res) => {
@@ -36,10 +35,29 @@ export class AppComponent implements OnInit {
         this.dataSource.data = this.messages.messages;
       });
 
+      this.dataSource.sort = this.sort;
+      console.log(this.dataSource.sort);
       setTimeout(() => {
         this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
+        console.log(this.dataSource.paginator);
       });
+
+      this.dataSource.sortingDataAccessor = (entry, property) => {
+        if (property === 'Name') {
+          return entry.first_name;
+        } 
+        else if (property == 'Message') {
+          return entry.messages[0].body;
+        }
+        else if (property == 'Date & Time') {
+          return entry.messages[0].date_completed.$date;
+        }
+        else {
+          return entry[property];
+        }
+      };
+        
+
   }
 
 }

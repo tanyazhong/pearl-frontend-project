@@ -1,5 +1,12 @@
 # PearlFrontendProject
 
+
+///////////////////////////////////////////////////////////////////////////////////////
+  Displays messages in a table with sorting, search, and pagination functionality.
+  This project got me my first job!
+///////////////////////////////////////////////////////////////////////////////////////
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.24.
 
 ## Development server
